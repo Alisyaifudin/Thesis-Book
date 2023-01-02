@@ -1,0 +1,34 @@
+\documentclass[onecolumn, fleqn, a4paper, 12pt, oneside]{book}
+% layout margin
+\usepackage[inner=4cm, outer=3cm, top=3cm, bottom=3cm]{geometry}
+% font family 'times new roman'-like
+\usepackage{newtxtext,newtxmath}
+% load image package
+\usepackage{graphicx}
+% chapter style centering
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[display]
+    {\centering\large\bfseries}
+    {Chapter \thechapter}
+    {0pt}
+    {\centering\MakeUppercase{#1}}
+\titlespacing{\chapter}{0pt}{-24pt}{*0}
+% TODO: page numbering position center bottom just about 1.5cm
+\pagestyle{plain}
+
+% newcommand
+\newcommand{\titlename}{Menggunakan GAIA DR3 Untuk Mengkonstrain Kerapatan Materi Gelap di Dekat Matahari dalam Kerangka MOND}
+\newcommand{\authorname}{Muhammad Ali Syaifudin}
+\newcommand{\authorid}{20321005}
+\newcommand{\department}{Program Studi Magister Astronomi}
+
+\begin{document}
+\frontmatter
+\clearpage
+\input{judul.tex}
+\pagenumbering{roman}
+\input{abstrak.tex}
+\input{abstract.tex}
+\input{pengesahan.tex}
+
+\end{document}

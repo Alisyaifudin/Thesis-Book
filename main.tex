@@ -1,20 +1,68 @@
-\documentclass[onecolumn, fleqn, a4paper, 12pt, oneside]{book}
+\documentclass[fleqn,a4paper,12pt,oneside,onecolumn]{book}
+
 % layout margin
 \usepackage[inner=4cm, outer=3cm, top=3cm, bottom=3cm]{geometry}
-% font family 'times new roman'-like
+% font family 'times new roman'-like, PLEASE REMOVE THESE MADNESS!
 \usepackage{newtxtext,newtxmath}
+% Package terkait AMS dan matematika
+\usepackage{amsmath}
 % load image package
 \usepackage{graphicx}
+% hanging indent
+\usepackage{hanging}
 % chapter style centering
 \usepackage[explicit]{titlesec}
-\titleformat{\chapter}[display]
+\titleformat{\chapter}[hang]
     {\centering\large\bfseries}
-    {Chapter \thechapter}
+    {\chaptertitlename\ \thechapter\;\;\;} 
     {0pt}
     {\centering\MakeUppercase{#1}}
 \titlespacing{\chapter}{0pt}{-24pt}{*0}
+% section size
+\titleformat{\section}
+    {\normalsize\bfseries}
+    {\thesection\;\;\;} 
+    {0pt}
+    {#1}
+
 % TODO: page numbering position center bottom just about 1.5cm
+% page style
 \pagestyle{plain}
+% roman chapter numbering
+\renewcommand{\thechapter}{\Roman{chapter}} 
+% package bahasa
+\usepackage[english]{babel} %nanti ganti ke indo...
+% \usepackage[indonesian]{babel}
+% fancy header, untuk mengganti tampilan header
+\usepackage{fancyhdr}
+% Package untuk menampilkan daftar pustaka
+% TODO: add indonesian format for biblatex, see https://tex.stackexchange.com/questions/200932/what-is-the-most-appropriate-way-to-configure-biblatex-for-use-with-an-unsupport
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=nyt
+]{biblatex}
+\usepackage{csquotes}
+\addbibresource{sample.bib}
+% Package hyperlinks dokumen
+\usepackage{hyperref}
+% indent first paragraph
+\usepackage{indentfirst}
+%----------------------------------------
+% JUDUL DALAM BAHASA INDONESIA
+\AtBeginDocument{\renewcommand{\contentsname}{DAFTAR ISI}}
+\AtBeginDocument{\renewcommand{\listfigurename}{DAFTAR GAMBAR}}
+\AtBeginDocument{\renewcommand{\listtablename}{DAFTAR TABEL}}
+\AtBeginDocument{\renewcommand{\chaptername}{BAB}}
+\AtBeginDocument{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
+% \AtBeginDocument{\renewcommand{\appendixpagename}{LAMPIRAN}}
+% \AtBeginDocument{\renewcommand{\appendixname}{LAMPIRAN}}
+% \AtBeginDocument{\renewcommand{\appendixtocname}{LAMPIRAN}}
+\AtBeginBibliography{\vspace*{\baselineskip}}
+%
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand{\index}{\arabic{indeks}}
+%----------------------------------------
 
 % newcommand
 \newcommand{\titlename}{Menggunakan GAIA DR3 Untuk Mengkonstrain Kerapatan Materi Gelap di Dekat Matahari dalam Kerangka MOND}
@@ -23,6 +71,7 @@
 \newcommand{\department}{Program Studi Magister Astronomi}
 
 \begin{document}
+% Bagian Awal Buku
 \frontmatter
 \clearpage
 \input{judul.tex}
@@ -30,5 +79,19 @@
 \input{abstrak.tex}
 \input{abstract.tex}
 \input{pengesahan.tex}
-
+\input{pedoman.tex}
+\input{dedikasi.tex}
+\input{pengantar.tex}
+% Daftar-daftar
+\tableofcontents
+\listoffigures
+\listoftables
+\input{singkatan.tex}
+% Bagian Utama Buku
+\mainmatter
+\input{bab1.tex}
+\input{bab2.tex}
+% Bagian Akhir Buku
+\backmatter
+\printbibliography
 \end{document}

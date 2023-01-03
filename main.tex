@@ -31,7 +31,7 @@
 % roman chapter numbering
 \renewcommand{\thechapter}{\Roman{chapter}} 
 % package bahasa
-\usepackage[english]{babel} %nanti ganti ke indo...
+\usepackage[english]{babel} % TODO: nanti ganti ke indo...
 % \usepackage[indonesian]{babel}
 % fancy header, untuk mengganti tampilan header
 \usepackage{fancyhdr}
@@ -63,13 +63,40 @@ sorting=nyt
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \renewcommand{\index}{\arabic{indeks}}
 %----------------------------------------
-
-% newcommand
+%-----------------------------------------
+% month abbreviation; Please remove this abomination if possible 😡
+\usepackage{xifthen}
+\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
+\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
+\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
+\newcommand{\monthabv}[2]{
+    \begin{switch}{#1}
+        \case{Januari}{Jan}
+        \case{Februari}{Feb}
+        \case{Maret}{Mar}
+        \case{April}{Apr}
+        \case{Mei}{Mei}
+        \case{Juni}{Jun}
+        \case{Juli}{Jul}
+        \case{Agustus}{Ags}
+        \case{September}{Sep}
+        \case{Oktober}{Okt}
+        \case{November}{Nov}
+        \case{Desember}{Des}
+        #2
+    \end{switch}
+}
+%-----------------------------------------
+% custom command
 \newcommand{\titlename}{Menggunakan GAIA DR3 Untuk Mengkonstrain Kerapatan Materi Gelap di Dekat Matahari dalam Kerangka MOND}
 \newcommand{\authorname}{Muhammad Ali Syaifudin}
 \newcommand{\authorid}{20321005}
 \newcommand{\department}{Program Studi Magister Astronomi}
-
+\newcommand{\completionyear}{2023}
+\newcommand{\completionmonth}{Januari}
+\newcommand{\completiondate}{\monthabv{\completionmonth}{\completionyear}}
+\newcommand{\fullcompletiondate}{5 \completionmonth\ \completionyear}
+%-----------------------------------------
 \begin{document}
 % Bagian Awal Buku
 \frontmatter
